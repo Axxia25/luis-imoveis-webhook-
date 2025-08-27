@@ -1,0 +1,20 @@
+# Dependências para API Flask (webhook_api.py)
+Flask==2.3.3
+flask-cors==4.0.0
+gspread==5.10.0
+google-auth==2.23.0
+google-auth-oauthlib==1.0.0
+google-auth-httplib2==0.1.1
+pytz==2023.3
+gunicorn==21.2.0
+
+# Dependências para Dashboard Streamlit (dashboard_streamlit.py)
+streamlit==1.26.0
+pandas==2.0.3
+plotly==5.17.0
+gspread==5.10.0
+google-auth==2.23.0
+pytz==2023.3
+
+# Dependências compartilhadas
+requests==2.31.0
