@@ -323,14 +323,17 @@ def main():
     tipos_disponiveis = ['Todos'] + list(df['Tipo Imóvel'].unique())
     tipo_selecionado = st.sidebar.selectbox("Filtrar por Tipo:", tipos_disponiveis)
     
-    # Filtro de período
+    # Filtro de período - CORREÇÃO APLICADA
     if not df['Data/Hora'].isna().all():
         data_min = df['Data/Hora'].min().date()
         data_max = df['Data/Hora'].max().date()
         
+        # Calcular período padrão baseado nos dados disponíveis
+        periodo_padrao_inicio = max(data_min, data_max - timedelta(days=30))
+        
         periodo = st.sidebar.date_input(
             "Período:",
-            value=(data_max - timedelta(days=30), data_max),
+            value=(periodo_padrao_inicio, data_max),
             min_value=data_min,
             max_value=data_max
         )
@@ -397,6 +400,3 @@ def main():
         f"Última atualização: {datetime.now(pytz.timezone('America/Sao_Paulo')).strftime('%d/%m/%Y %H:%M:%S')} | "
         f"Dados em tempo real da planilha Google"
     )
-
-if __name__ == "__main__":
-    main()
